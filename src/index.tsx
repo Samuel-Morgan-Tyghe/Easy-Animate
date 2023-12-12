@@ -6,14 +6,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import {
-  Children,
-  ReactNode,
-  cloneElement,
-  isValidElement,
-  useRef,
-} from "react";
-import React from "react";
+import React, { Children, ReactNode, cloneElement, useRef } from "react";
 
 type ScrollOnViewProps = {
   children?: ReactNode;
@@ -37,7 +30,7 @@ interface TriggerOnScrollProps {
   transitionLength?: number;
   transitionTiming?: string;
   transitionDelay?: number;
-  offset?: [any, any];
+  offset?: any;
   shouldAnimateOpacity?: boolean;
   shouldAnimateScaleX?: boolean;
   shouldAnimateScaleY?: boolean;
@@ -72,7 +65,8 @@ export function TriggerOnScroll({
   ...additionalProps
 }: TriggerOnScrollProps) {
   const ref = useRef(null);
-  const props = withProps ? { ...children.props } : {};
+  const props =
+    withProps && React.isValidElement(children) ? { ...children.props } : {};
 
   const { scrollYProgress } = useScroll({ target: ref, offset });
   const animationValue = useSpring(scrollYProgress, {
@@ -258,16 +252,15 @@ export function TraverseAndAnimate({
   const wrapChildren = (children) => {
     const arrayChildren = Children.toArray(children);
     return arrayChildren.length > 1 ||
-      arrayChildren[0]?.props?.children?.length > 1 ? (
+      (React.isValidElement(arrayChildren[0]) &&
+        arrayChildren[0]?.props?.children?.length > 1) ? (
       arrayChildren.map((child) => {
         index++;
-        const innerChild = child.props.children;
+        const innerChild = React.isValidElement(child)
+          ? child.props.children
+          : null;
 
-        const hasValidElement = Array.isArray(innerChild)
-          ? innerChild.some((child) => isValidElement(child))
-          : isValidElement(innerChild);
-
-        return innerChild && hasValidElement ? (
+        return React.isValidElement(child) ? (
           cloneElement(child, undefined, wrapChildren(innerChild))
         ) : (
           <ScrollOnView
