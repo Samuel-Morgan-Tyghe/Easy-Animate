@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+      "outDir": "./dist",
+      "module": "commonjs",
+      "target": "es5",
+      "declaration": true,
+      "esModuleInterop": true
+      
+    },
+    "types": ["react"],
+    "include": ["src"],
+    "exclude": ["node_modules", "dist"]
+  }
+  
