@@ -1,7 +1,7 @@
 {
   "name": "easy-chakra-animate",
-  "version": "1.0.1",
-  "main": "index.js",
+  "version": "1.0.2",
+  "main": "dist/index.js",
   "repository": "https://github.com/Samuel-Morgan-Tyghe/Easy-Animate.git",
   "author": "Sam-Morgan-Tyghe <sam.morgan@hedgehoglab.com>",
   "license": "MIT",
