@@ -55,15 +55,19 @@ yarn add easy-chakra-animate
 ## Usage
 
 ```jsx
-import { TriggerOnScroll, ScrollOnView, AnimateAllChildren, TraverseAndAnimate } from 'your-animation-package';
+import { TriggerOnScroll, ScrollOnView, AnimateAllChildren, TraverseAndAnimate } from 'easy-chakra-animate';
 
 // Example usage
-   <AnimateAllChildren>
-      {list.map((componentData) => (
-          <DynamicComponent key={componentData.id} componentData={componentData} />
-      ))}
-    </AnimateAllChildren>
+<AnimateAllChildren>
+  {list.map((componentData) => (
+    <DynamicComponent key={componentData.id} componentData={componentData} />
+  ))}
+</AnimateAllChildren>
 ```
+
+## Demo
+
+See these components in action [here](https://643c599e10255e45ba42fdae-celzvjwdvb.chromatic.com/?path=/story/animations-onscroll--default).
 
 ## Dependencies
 
