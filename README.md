@@ -58,9 +58,11 @@ yarn add easy-chakra-animate
 import { TriggerOnScroll, ScrollOnView, AnimateAllChildren, TraverseAndAnimate } from 'your-animation-package';
 
 // Example usage
-<TriggerOnScroll shouldAnimateOpacity={true}>
-  <YourComponent />
-</TriggerOnScroll>
+   <AnimateAllChildren>
+      {list.map((componentData) => (
+          <DynamicComponent key={componentData.id} componentData={componentData} />
+      ))}
+    </AnimateAllChildren>
 ```
 
 ## Dependencies
