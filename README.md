@@ -1,6 +1,77 @@
-Introduction: Briefly describe what your package does.
-Installation: Provide instructions on how to install your package.
-Usage: Show some basic usage examples.
-API Reference: If applicable, document your package's API.
-Contributing: Guide on how others can contribute to your package.
-License: Mention the license type.
+# README for React Animation Components
+
+## Overview
+
+This package provides a set of React components designed to enable smooth and customizable animations for web elements during scrolling and other interactions. Leveraging `framer-motion` for fluid animations, these components are highly adaptable for various use cases.
+
+## Components
+
+### `TriggerOnScroll`
+
+Animates elements based on scroll position.
+
+#### Props
+
+- **`stiffness`, `damping`, `restDelta`**: Spring animation configuration.
+- **`offset`**: Defines the scroll range for triggering the animation.
+- **`shouldAnimateOpacity`, `shouldAnimateScaleX`, etc.**: Boolean props to enable specific animations.
+- **`offSetOutputRange`, `transformOutputRange`, `bgColorOutputRange`**: Define the output range for the respective animations.
+
+### `ScrollOnView`
+
+Fades and translates elements into view on scroll.
+
+#### Props
+
+- **`transitionDelayVelocity`, `transitionLength`, `transitionTiming`, `transitionDelay`**: Control the transition timing and delay.
+- **`useInViewOnce`**: Boolean to determine if the animation should only play once.
+- **`indexOffset`**: Adjusts the delay based on the element's index.
+
+### `AnimateAllChildren`
+
+Applies `ScrollOnView` or `TriggerOnScroll` animations to all child elements.
+
+#### Props
+
+- Inherits all props from `TriggerOnScroll` and `ScrollOnView`.
+- **`scrollOnView`**: Determines which animation type to use.
+- **`indexOffset`**: Adjusts the index offset for staggered animations.
+
+### `TraverseAndAnimate`
+
+Recursively applies `ScrollOnView` to nested child elements.
+
+#### Props
+
+- **`transitionDelayVelocity`, `transitionLength`, `transitionTiming`, `transitionDelay`**: Control the transition timing and delay.
+- **`useInViewOnce`**: Determines if the animation should only play once.
+
+## Installation
+
+```bash
+yarn add easy-chakra-animate
+```
+
+## Usage
+
+```jsx
+import { TriggerOnScroll, ScrollOnView, AnimateAllChildren, TraverseAndAnimate } from 'your-animation-package';
+
+// Example usage
+<TriggerOnScroll shouldAnimateOpacity={true}>
+  <YourComponent />
+</TriggerOnScroll>
+```
+
+## Dependencies
+
+- React
+- Framer Motion
+
+## Contributing
+
+Contributions are welcome. Please submit a pull request or an issue for any feature requests or bugs.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
